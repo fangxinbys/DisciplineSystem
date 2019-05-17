@@ -16,8 +16,8 @@
 
             <Items>
 
-                <f:Panel runat="server" ID="panelLeftRegion" RegionPosition="Left" RegionSplit="true" EnableCollapse="true"
-                    Width="230px" Title="1.选择部门" ShowBorder="true" ShowHeader="true" AutoScroll="true"
+                <f:Panel runat="server" ID="panelLeftRegion" RegionPosition="Left" RegionSplit="false" EnableCollapse="true"
+                    Width="230px" Title="1.组织机构" ShowBorder="true" ShowHeader="true" AutoScroll="true"
                     BodyPadding="10px">
                     <Items>
                         <f:Tree ID="TreeDpt" IsFluid="true" CssClass="blockpanel" ShowHeader="false" Title="组织架构" ShowBorder="false"
@@ -25,7 +25,7 @@
                         </f:Tree>
                     </Items>
                 </f:Panel>
-                <f:Panel runat="server" ID="panel2" RegionPosition="Left" RegionSplit="true" EnableCollapse="true"
+                <f:Panel runat="server" ID="panel2" RegionPosition="Left" RegionSplit="false" EnableCollapse="true"
                     Width="230px" Title="2.选择用户" ShowBorder="true" ShowHeader="true" AutoScroll="true"
                     BodyPadding="10px">
                     <Items>
@@ -34,8 +34,8 @@
                         </f:Tree>
                     </Items>
                 </f:Panel>
-                <f:Panel runat="server" ID="panel3" RegionPosition="Left" RegionSplit="true" EnableCollapse="true"
-                    Width="230px" Title="3.权限列表" ShowBorder="true" ShowHeader="true" AutoScroll="true"
+                <f:Panel runat="server" ID="panel3" RegionPosition="Left" RegionSplit="false" EnableCollapse="true"
+                    Width="230px" Title="3.设置权限" ShowBorder="true" ShowHeader="true" AutoScroll="true"
                     BodyPadding="10px">
 
                     <Items>
