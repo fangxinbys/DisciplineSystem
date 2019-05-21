@@ -84,11 +84,12 @@ namespace Maticsoft.Web.Admin.DptMent
                 GridDpt.RecordCount = BLL.GetRecordCount(" dptFatherId=" + NodeId);
                 DataView view = BLL.GetListByPage(" dptFatherId=" + NodeId, " dptId asc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
                 view.Sort = String.Format("{0} {1}", sortField, sortDirection);
-                GridDpt.DataSource = view.ToTable();
+                GridDpt.DataSource = view.ToTable(); 
             }
             GridDpt.DataBind();
         
         }
+       
 
         protected void TreeDpt_NodeCommand(object sender, TreeCommandEventArgs e)
         {

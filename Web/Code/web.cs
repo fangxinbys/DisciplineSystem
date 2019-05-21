@@ -14,8 +14,8 @@ namespace Maticsoft.Web.Code
 {
     public class web
     {
-     
-      
+
+       
         public void SetWebHeader(Page page)
         {
             Maticsoft.BLL.tSet bll = new Maticsoft.BLL.tSet();

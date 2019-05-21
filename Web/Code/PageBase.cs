@@ -74,7 +74,26 @@ namespace Web
             return false;
         }
 
-
+        protected StringBuilder GetTreeNode(FineUIPro.TreeNode nodes, StringBuilder strTree,bool first)
+        {
+            if (first)
+            {
+                strTree.Append(nodes.NodeID.Trim() + ",");
+            }
+            for (int i=0;i<nodes.Nodes.Count;i++)
+            {
+                if (nodes.Nodes[i].Leaf)
+                {
+                    strTree.Append(nodes.Nodes[i].NodeID.Trim() + ",");
+                }
+                else
+                {
+                    GetTreeNode(nodes.Nodes[i], strTree,false);
+                }
+            }
+           
+            return strTree;
+        }
         protected void RegisterOnlineUser(Maticsoft.Model.tUsers user)
         {
             Maticsoft.BLL.S_Onlines bll = new Maticsoft.BLL.S_Onlines();
