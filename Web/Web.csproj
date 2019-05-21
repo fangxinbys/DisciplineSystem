@@ -94,6 +94,8 @@
     <Content Include="Admin\Role\RoleEdit.aspx" />
     <Content Include="Admin\Role\RoleList.aspx" />
     <Content Include="Admin\Role\roleMenu.aspx" />
+    <Content Include="Admin\Topic\TopicEdit.aspx" />
+    <Content Include="Admin\Topic\TopicList.aspx" />
     <Content Include="Admin\UserInfo.aspx" />
     <Content Include="Admin\Users\userDpt.aspx" />
     <Content Include="Admin\Users\UserEdit.aspx" />
@@ -2383,6 +2385,20 @@
     </Compile>
     <Compile Include="Admin\Role\roleMenu.aspx.designer.cs">
       <DependentUpon>roleMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Topic\TopicEdit.aspx.cs">
+      <DependentUpon>TopicEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Topic\TopicEdit.aspx.designer.cs">
+      <DependentUpon>TopicEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Topic\TopicList.aspx.cs">
+      <DependentUpon>TopicList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Topic\TopicList.aspx.designer.cs">
+      <DependentUpon>TopicList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserInfo.aspx.cs">
       <DependentUpon>UserInfo.aspx</DependentUpon>

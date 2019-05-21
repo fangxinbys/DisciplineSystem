@@ -54,7 +54,7 @@
                     EnableCollapse="true" Layout="Fit" RegionPosition="Left"
                     RegionSplit="true" RegionSplitWidth="3" RegionSplitIcon="false" runat="server">
                     <Items>
-                        <f:Tree runat="server" ShowBorder="false" ShowHeader="false" ID="treeMenu" EnableSingleClickExpand="false" EnableSingleExpand="true">
+                        <f:Tree runat="server" ShowBorder="false" ShowHeader="false" ID="treeMenu" EnableSingleClickExpand="true" EnableSingleExpand="false">
                         </f:Tree>
                     </Items>
                 </f:Panel>

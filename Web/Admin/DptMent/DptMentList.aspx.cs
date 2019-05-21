@@ -67,29 +67,50 @@ namespace Maticsoft.Web.Admin.DptMent
 
         protected void LoadData()
         {
-            Maticsoft.BLL.tDepartMent BLL = new Maticsoft.BLL.tDepartMent();
-            string sortField = GridDpt.SortField;
-            string sortDirection = GridDpt.SortDirection;
+
+
             if (TreeDpt.SelectedNode == null)
             {
-                GridDpt.RecordCount = BLL.GetRecordCount(" dptId<>10000 ");
-    
-                DataView view = BLL.GetListByPage(" dptId<>10000 ", " dptId asc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
-                view.Sort = String.Format("{0} {1}", sortField, sortDirection);
-                GridDpt.DataSource = view.ToTable();
+                getAll();
             }
             else
             {
                 string NodeId = TreeDpt.SelectedNodeID;
-                GridDpt.RecordCount = BLL.GetRecordCount(" dptFatherId=" + NodeId);
-                DataView view = BLL.GetListByPage(" dptFatherId=" + NodeId, " dptId asc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
-                view.Sort = String.Format("{0} {1}", sortField, sortDirection);
-                GridDpt.DataSource = view.ToTable(); 
+
+                if (NodeId == "10000")
+                {
+                    getAll();
+                }
+                else
+                {
+                    getAllById();
+                }
             }
             GridDpt.DataBind();
-        
         }
-       
+        Maticsoft.BLL.tDepartMent BLLGET = new Maticsoft.BLL.tDepartMent();
+        private void getAll()
+        {
+            string sortField = GridDpt.SortField;
+            string sortDirection = GridDpt.SortDirection;
+            GridDpt.RecordCount = BLLGET.GetRecordCount(" dptId<>10000 ");
+
+            DataView view = BLLGET.GetListByPage(" dptId<>10000 ", " dptId asc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
+            view.Sort = String.Format("{0} {1}", sortField, sortDirection);
+            GridDpt.DataSource = view.ToTable();
+        }
+
+        private void getAllById()
+        {
+            string NodeId = TreeDpt.SelectedNodeID;
+            string sortField = GridDpt.SortField;
+            string sortDirection = GridDpt.SortDirection;  
+            GridDpt.RecordCount = BLLGET.GetRecordCount(" dptFatherId=" + NodeId);
+            DataView view = BLLGET.GetListByPage(" dptFatherId=" + NodeId, " dptId asc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
+            view.Sort = String.Format("{0} {1}", sortField, sortDirection);
+            GridDpt.DataSource = view.ToTable();
+        }
+
 
         protected void TreeDpt_NodeCommand(object sender, TreeCommandEventArgs e)
         {

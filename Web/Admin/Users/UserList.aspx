@@ -33,6 +33,8 @@
                                     <Items>
                                         <f:ToolbarFill ID="ToolbarFill1" runat="server">
                                         </f:ToolbarFill>
+                                             <f:Button ID="btnRea" runat="server" Icon="Reload" Text="刷新" OnClick="btnRea_Click">
+                                        </f:Button>
                                         <f:Button ID="btnNew" runat="server" Icon="Add" Text="添加用户" OnClick="btnNew_Click">
                                         </f:Button>
                                     </Items>

@@ -179,5 +179,11 @@ namespace Maticsoft.Web.Admin.Users
                 return "<span style='color:green'>启用</span>";
             }
         }
+
+        protected void btnRea_Click(object sender, EventArgs e)
+        {
+            TreeDpt.SelectedNodeID = null;
+            LoadData();
+        }
     }
 }

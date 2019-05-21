@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Maticsoft.Web.Admin.Users {
+namespace Maticsoft.Web.Admin.Topic {
     
     
-    public partial class UserList {
+    public partial class TopicList {
         
         /// <summary>
         /// form1 控件。
@@ -94,15 +94,6 @@ namespace Maticsoft.Web.Admin.Users {
         protected global::FineUIPro.ToolbarFill ToolbarFill1;
         
         /// <summary>
-        /// btnRea 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Button btnRea;
-        
-        /// <summary>
         /// btnNew 控件。
         /// </summary>
         /// <remarks>
@@ -110,33 +101,6 @@ namespace Maticsoft.Web.Admin.Users {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::FineUIPro.Button btnNew;
-        
-        /// <summary>
-        /// dpt 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label dpt;
-        
-        /// <summary>
-        /// rname 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label rname;
-        
-        /// <summary>
-        /// zt 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label zt;
         
         /// <summary>
         /// Window1 控件。

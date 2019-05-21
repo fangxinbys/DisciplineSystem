@@ -110,6 +110,7 @@
     <Compile Include="tRoleMenu.cs" />
     <Compile Include="tSet.cs" />
     <Compile Include="tSysLog.cs" />
+    <Compile Include="tTopic.cs" />
     <Compile Include="tUserPower.cs" />
     <Compile Include="tUsers.cs" />
     <Compile Include="t_Index.cs" />

@@ -88,7 +88,7 @@ namespace Web
                 }
                 else
                 {
-                    GetTreeNode(nodes.Nodes[i], strTree,false);
+                    GetTreeNode(nodes.Nodes[i], strTree,true);
                 }
             }
            
