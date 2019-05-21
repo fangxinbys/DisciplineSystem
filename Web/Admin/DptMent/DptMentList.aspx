@@ -14,7 +14,7 @@
             <Items>
 
                 <f:Panel runat="server" ID="panelLeftRegion" RegionPosition="Left" RegionSplit="false" EnableCollapse="true" ShowBorder="false"
-                    RegionPercent="20%" ShowHeader="false" IconFont="_PullLeft" AutoScroll="true">
+                    RegionPercent="30%" ShowHeader="false" IconFont="_PullLeft" AutoScroll="true">
                     <Items>
                         <f:Tree ID="TreeDpt" IsFluid="true" CssClass="blockpanel" ShowHeader="true" Title="组织架构"
                             EnableCollapse="false" runat="server" OnNodeCommand="TreeDpt_NodeCommand">
@@ -23,7 +23,7 @@
                 </f:Panel>
 
                 <f:Panel runat="server" ID="panelRightRegion" RegionPosition="Right" RegionSplit="false" EnableCollapse="true" AutoScroll="true"
-                    RegionPercent="80%" ShowHeader="false" IconFont="_PullRight">
+                    RegionPercent="70%" ShowHeader="false" IconFont="_PullRight">
                     <Items>
                         <f:Grid ID="GridDpt" runat="server" ShowBorder="false" ShowHeader="false"  OnPageIndexChange="GridDpt_PageIndexChange"
                             DataKeyNames="dptId" EnableMultiSelect="false" ShowPagingMessage="true" AllowPaging="true" IsDatabasePaging="true"  
@@ -43,6 +43,7 @@
                                
                                 <f:BoundField DataField="dptId" HeaderText="编码" Width="150px" SortField="dptId" />
                                 <f:BoundField DataField="dptName" HeaderText="部门名称" Width="150px" />
+                                <f:BoundField DataField="dptNum" HeaderText="排序" Width="150px" />
                                 <f:BoundField DataField="dptRemark" HeaderText="部门描述" ExpandUnusedSpace="true" />
 
                                 <f:LinkButtonField ColumnID="editField" TextAlign="Center" Icon="Pencil" ToolTip="编辑" ConfirmTarget="Top" CommandName="Edit" Width="50px" />

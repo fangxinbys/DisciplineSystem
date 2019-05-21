@@ -52,7 +52,7 @@ namespace Maticsoft.Web.Admin.DptMent
             if (rows.Length > 0)
             {
                 // 如果是目录，则默认展开
-                treeNode.Expanded = false;
+                treeNode.Expanded = true;
                 foreach (DataRow row in rows)
                 {
                     FineUIPro.TreeNode node = new FineUIPro.TreeNode();

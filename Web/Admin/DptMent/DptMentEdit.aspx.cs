@@ -42,7 +42,7 @@ namespace Maticsoft.Web.Admin.DptMent
             txtDptName.Text = m.dptName;
             txtRemark.Text = m.dptRemark;
             dptFatherId.Text = m.dptFatherId.ToString();
-
+            txtSort.Text = m.dptNum.ToString();
             txtFather.Text = BLL.GetModel((int)m.dptFatherId).dptName;
         }
 
@@ -73,7 +73,7 @@ namespace Maticsoft.Web.Admin.DptMent
                 m.dptName = txtDptName.Text.Trim();
                 m.dptRemark = txtRemark.Text.Trim();
                 m.dptFatherId =Convert.ToInt32(dptFatherId.Text);
-
+                m.dptNum = Convert.ToInt32(txtSort.Text);
 
 
                 if (BLL.Update(m) == true)
@@ -91,6 +91,7 @@ namespace Maticsoft.Web.Admin.DptMent
                 m.dptName = txtDptName.Text.Trim();
                 m.dptRemark = txtRemark.Text.Trim();
                 m.dptFatherId = Convert.ToInt32(dptFatherId.Text);
+                m.dptNum = Convert.ToInt32(txtSort.Text);
                 if (BLL.Add(m) >= 1)
                 {
                     PageContext.RegisterStartupScript(ActiveWindow.GetHidePostBackReference());

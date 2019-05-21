@@ -43,7 +43,11 @@
                                 </f:TriggerBox>
                             </Items>
                         </f:FormRow>
-
+                            <f:FormRow>
+                            <Items>
+                                <f:NumberBox ID="txtSort" Label="部门排序" Required="true" ShowRedStar="true" runat="server" EmptyText="请输入数字" NoDecimal="True" NoNegative="True" Text="0" />
+                            </Items>
+                        </f:FormRow>
 
                         <f:FormRow runat="server">
                             <Items>

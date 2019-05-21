@@ -46,17 +46,21 @@ namespace Maticsoft.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tDepartMent(");
-			strSql.Append("dptName,dptRemark,dptFatherId)");
+			strSql.Append("dptName,dptRemark,dptFatherId,dptType,dptNum)");
 			strSql.Append(" values (");
-			strSql.Append("@dptName,@dptRemark,@dptFatherId)");
+			strSql.Append("@dptName,@dptRemark,@dptFatherId,@dptType,@dptNum)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
 					new SqlParameter("@dptName", SqlDbType.NVarChar,50),
 					new SqlParameter("@dptRemark", SqlDbType.NVarChar,-1),
-					new SqlParameter("@dptFatherId", SqlDbType.Int,4)};
+					new SqlParameter("@dptFatherId", SqlDbType.Int,4),
+					new SqlParameter("@dptType", SqlDbType.Int,4),
+					new SqlParameter("@dptNum", SqlDbType.Int,4)};
 			parameters[0].Value = model.dptName;
 			parameters[1].Value = model.dptRemark;
 			parameters[2].Value = model.dptFatherId;
+			parameters[3].Value = model.dptType;
+			parameters[4].Value = model.dptNum;
 
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
@@ -77,17 +81,23 @@ namespace Maticsoft.DAL
 			strSql.Append("update tDepartMent set ");
 			strSql.Append("dptName=@dptName,");
 			strSql.Append("dptRemark=@dptRemark,");
-			strSql.Append("dptFatherId=@dptFatherId");
+			strSql.Append("dptFatherId=@dptFatherId,");
+			strSql.Append("dptType=@dptType,");
+			strSql.Append("dptNum=@dptNum");
 			strSql.Append(" where dptId=@dptId");
 			SqlParameter[] parameters = {
 					new SqlParameter("@dptName", SqlDbType.NVarChar,50),
 					new SqlParameter("@dptRemark", SqlDbType.NVarChar,-1),
 					new SqlParameter("@dptFatherId", SqlDbType.Int,4),
+					new SqlParameter("@dptType", SqlDbType.Int,4),
+					new SqlParameter("@dptNum", SqlDbType.Int,4),
 					new SqlParameter("@dptId", SqlDbType.Int,4)};
 			parameters[0].Value = model.dptName;
 			parameters[1].Value = model.dptRemark;
 			parameters[2].Value = model.dptFatherId;
-			parameters[3].Value = model.dptId;
+			parameters[3].Value = model.dptType;
+			parameters[4].Value = model.dptNum;
+			parameters[5].Value = model.dptId;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -151,7 +161,7 @@ namespace Maticsoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 dptId,dptName,dptRemark,dptFatherId from tDepartMent ");
+			strSql.Append("select  top 1 dptId,dptName,dptRemark,dptFatherId,dptType,dptNum from tDepartMent ");
 			strSql.Append(" where dptId=@dptId");
 			SqlParameter[] parameters = {
 					new SqlParameter("@dptId", SqlDbType.Int,4)
@@ -195,6 +205,14 @@ namespace Maticsoft.DAL
 				{
 					model.dptFatherId=int.Parse(row["dptFatherId"].ToString());
 				}
+				if(row["dptType"]!=null && row["dptType"].ToString()!="")
+				{
+					model.dptType=int.Parse(row["dptType"].ToString());
+				}
+				if(row["dptNum"]!=null && row["dptNum"].ToString()!="")
+				{
+					model.dptNum=int.Parse(row["dptNum"].ToString());
+				}
 			}
 			return model;
 		}
@@ -205,8 +223,8 @@ namespace Maticsoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select dptId,dptName,dptRemark,dptFatherId ");
-			strSql.Append(" FROM tDepartMent ");
+			strSql.Append("select dptId,dptName,dptRemark,dptFatherId,dptType,dptNum ");
+			strSql.Append(" FROM tDepartMent order by dptNum desc");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -225,7 +243,7 @@ namespace Maticsoft.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" dptId,dptName,dptRemark,dptFatherId ");
+			strSql.Append(" dptId,dptName,dptRemark,dptFatherId,dptType,dptNum ");
 			strSql.Append(" FROM tDepartMent ");
 			if(strWhere.Trim()!="")
 			{

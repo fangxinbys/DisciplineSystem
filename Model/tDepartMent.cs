@@ -14,6 +14,8 @@ namespace Maticsoft.Model
 		private string _dptname;
 		private string _dptremark;
 		private int? _dptfatherid;
+		private int? _dpttype;
+		private int? _dptnum;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -45,6 +47,22 @@ namespace Maticsoft.Model
 		{
 			set{ _dptfatherid=value;}
 			get{return _dptfatherid;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? dptType
+		{
+			set{ _dpttype=value;}
+			get{return _dpttype;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? dptNum
+		{
+			set{ _dptnum=value;}
+			get{return _dptnum;}
 		}
 		#endregion Model
 
