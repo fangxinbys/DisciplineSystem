@@ -25,14 +25,15 @@
                 <f:Panel runat="server" ID="panelRightRegion" RegionPosition="Right" RegionSplit="false" EnableCollapse="true" AutoScroll="true"
                     RegionPercent="80%" ShowHeader="false" IconFont="_PullRight">
                     <Items>
-                        <f:Grid ID="GridDpt" runat="server" ShowBorder="false" ShowHeader="false" OnPageIndexChange="GridDpt_PageIndexChange" EnableCheckBoxSelect="false"
-                            DataKeyNames="Id" EnableMultiSelect="false" ShowPagingMessage="true" AllowPaging="true" IsDatabasePaging="true"
+                        <f:Grid ID="GridDpt" runat="server" ShowBorder="false" ShowHeader="false" OnPageIndexChange="GridDpt_PageIndexChange" OnPreRowDataBound="GridDpt_PreRowDataBound"
+                            DataKeyNames="Id" EnableMultiSelect="true" ShowPagingMessage="true" AllowPaging="true" IsDatabasePaging="true" EnableCheckBoxSelect="true"
                             OnRowCommand="GridDpt_RowCommand" AllowSorting="true" SortField="Id" SortDirection="asc" OnSort="GridDpt_Sort">
                             <Toolbars>
                                 <f:Toolbar ID="Toolbar1" Position="Top" runat="server">
                                     <Items>
                                         <f:ToolbarFill ID="ToolbarFill1" runat="server">
                                         </f:ToolbarFill>
+
                                         <f:Button ID="btnNew" runat="server" Icon="Add" Text="添加" OnClick="btnNew_Click">
                                         </f:Button>
                                     </Items>
@@ -40,17 +41,19 @@
                             </Toolbars>
                             <Columns>
 
-                                <f:RowNumberField EnablePagingNumber="true"   />
+
 
                                 <f:BoundField DataField="topicTitle" HeaderText="议题名称" ExpandUnusedSpace="true" />
-                                <f:BoundField DataField="topicTime" HeaderText="提出时间" ExpandUnusedSpace="true" />
-                                <f:BoundField DataField="policyTime" HeaderText="决策时间" ExpandUnusedSpace="true" />
-                                <f:BoundField DataField="isCheck" HeaderText="状态" ExpandUnusedSpace="true" />
-                                <f:BoundField DataField="isCheckPeo" HeaderText="审核人" ExpandUnusedSpace="true" />
-                                <f:BoundField DataField="isCheckTime" HeaderText="审核时间" ExpandUnusedSpace="true" />
-                                <f:LinkButtonField ColumnID="editField" TextAlign="Center" Icon="Pencil" ToolTip="编辑" ConfirmTarget="Top" CommandName="Edit" Width="50px" />
-                                <f:LinkButtonField ColumnID="deleteField" TextAlign="Center" Icon="Delete" ToolTip="删除"
-                                    ConfirmText="确定删除该条信息？" ConfirmTarget="Top" CommandName="Delete" Width="50px" />
+                                <f:BoundField DataField="topicTime" HeaderText="提出时间" />
+                                <f:BoundField DataField="policyTime" HeaderText="决策时间" />
+
+                                <f:BoundField DataField="isCheck" HeaderText="状态" />
+                                <f:BoundField DataField="isCheckPeo" HeaderText="审核人" />
+                                <f:BoundField DataField="isCheckTime" HeaderText="审核时间" />
+                                <f:LinkButtonField ColumnID="checkField" TextAlign="Center" ConfirmTarget="Top" CommandName="Check" Width="50px" HeaderText="锁定" />
+
+                                <f:LinkButtonField ColumnID="editField" TextAlign="Center" ConfirmTarget="Top" CommandName="Edit" Width="50px" HeaderText="议题" />
+                                <f:LinkButtonField ColumnID="deleteField" TextAlign="Center" Icon="Delete" ConfirmText="确定删除该条信息？" ConfirmTarget="Top" CommandName="Delete" Width="50px" />
                             </Columns>
                         </f:Grid>
                     </Items>

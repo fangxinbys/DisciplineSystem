@@ -30,8 +30,7 @@ namespace Maticsoft.Web.Admin.Topic
                     string dptId = Request.QueryString["dptId"];
                     BLL.tDepartMent bdpt = new BLL.tDepartMent();
                     txtDptName.Text= bdpt.GetModel(Convert.ToInt32(dptId)).dptName;
-
-
+                     
                 }
                 
 

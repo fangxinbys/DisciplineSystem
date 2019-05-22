@@ -104,16 +104,14 @@ namespace Maticsoft.Web.Admin.Topic
 
         protected void GridDpt_RowCommand(object sender, GridCommandEventArgs e)
         {
-           
+            BLL.tTopic uBLL = new BLL.tTopic();
             int deptID  = GetSelectedDataKeyID(GridDpt);
 
 
             if (e.CommandName == "Delete")
             {
-
-
-                 
-                BLL.tTopic uBLL = new BLL.tTopic();
+                
+              
                 if (uBLL.GetModel(deptID).isCheck=="已审核")
                 {
                     Alert.ShowInTop("已经审核,无法删除！");
@@ -130,13 +128,52 @@ namespace Maticsoft.Web.Admin.Topic
                     LoadData();
                 }
             }
-            if (e.CommandName == "Edit")
+            else if (e.CommandName == "Edit")
             {
                 Window1.Title = "决策管理";
                 string openUrl = String.Format("./TopicEdit.aspx?Id={0}&tId="+tId, HttpUtility.UrlEncode(deptID.ToString()));
                 PageContext.RegisterStartupScript(Window1.GetSaveStateReference(deptID.ToString()) + Window1.GetShowReference(openUrl));
             }
+            else if (e.CommandName == "Check")
+            {
+                Model.tUsers user = GetIdentityUser();
 
+
+                if (!haveRight(user.userId, "三重一大审批"))
+                {
+                    Alert.ShowInTop("当前用户没有权限审批！");
+                    return;
+                }
+                Model.tTopic top = uBLL.GetModel(deptID);
+
+                if (top.isCheck == "已审核")
+                {
+                    //if (top.isCheckPeo != user.usersName)
+                    //{
+                    //    Alert.ShowInTop("当前用户没有权限审批！");
+                    //    return;
+                    //}
+                    top.isCheck = "待审核";
+
+                }
+                else
+                {
+                    top.isCheck = "已审核";
+                }
+
+                top.isCheckPeo = user.usersName;
+                top.isCheckTime = DateTime.Now;
+                bool isTrue = uBLL.Update(top);
+                if (!isTrue)
+                {
+                    Alert.ShowInTop("操作失败！");
+                    return;
+                }
+                else
+                {
+                    LoadData();
+                }
+            }
 
         }
 
@@ -158,6 +195,37 @@ namespace Maticsoft.Web.Admin.Topic
             Alert.ShowInTop("保存成功");
             BindTree();
             LoadData();
+        }
+
+        protected void GridDpt_PreRowDataBound(object sender, GridPreRowEventArgs e)
+        {
+            // 如果绑定到 DataTable，那么这里的 DataItem 就是 DataRowView
+            DataRowView row = e.DataItem as DataRowView;
+
+            LinkButtonField checkField = GridDpt.FindColumn("checkField") as LinkButtonField;
+            LinkButtonField editField = GridDpt.FindColumn("editField") as LinkButtonField;
+            LinkButtonField deleteField = GridDpt.FindColumn("deleteField") as LinkButtonField;
+
+            if ( row["isCheck"].ToString()=="已审核")
+            {
+                deleteField.Enabled = false;
+                checkField.Text = "取审";
+                editField.Text = "查看";
+            }
+            else
+            {
+                deleteField.Enabled = true;
+                checkField.Text = "审核";
+                editField.Text = "编辑";
+            }
+            if (!haveRight(GetIdentityUser().userId, "三重一大审批"))
+            {
+                checkField.Enabled = false;
+            }
+            else
+            {
+                checkField.Enabled = true;
+            }
         }
     }
 }

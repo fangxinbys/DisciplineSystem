@@ -73,7 +73,31 @@ namespace Web
             }
             return false;
         }
+        protected bool haveRight(int userId,string powerName)
+        {
+            Maticsoft.BLL.tPower pbll = new Maticsoft.BLL.tPower();
+            System.Collections.Generic.List<Maticsoft.Model.tPower> list = pbll.GetModelList(" powerName='" + powerName + "'");
+            Maticsoft.Model.tPower pm = list.Count == 0 ? null : list[0];
+            if (pm == null)
+            {
+                return false;
+            }
+            else
+            {
+                Maticsoft.BLL.tUserPower userpw = new Maticsoft.BLL.tUserPower();
+                System.Collections.Generic.List<Maticsoft.Model.tUserPower> listpw = userpw.GetModelList(" powerId=" + pm.powerId + " and userId="+userId+" ");
+                Maticsoft.Model.tUserPower model = listpw.Count == 0 ? null : listpw[0];
+                if (model == null)
+                {
+                    return false;
+                }
+                else
+                { 
+                    return true; 
+                }
 
+            }
+        }
         protected StringBuilder GetTreeNode(FineUIPro.TreeNode nodes, StringBuilder strTree,bool first)
         {
             if (first)
