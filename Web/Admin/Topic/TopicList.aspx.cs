@@ -86,9 +86,20 @@ namespace Maticsoft.Web.Admin.Topic
             string sortDirection = GridDpt.SortDirection;
             StringBuilder sb = new StringBuilder();
             string dptlist = GetTreeNode(TreeDpt.SelectedNode, sb, true).ToString();
-            GridDpt.RecordCount = BLLGET.GetRecordCount(string.Format(" policyDptId in ({0}) and policyType="+tId, dptlist.Substring(0, dptlist.Length - 1)));
+            string where = "";
+            where += " policyDptId in ("+ dptlist.Substring(0, dptlist.Length - 1) + ")";
+            if (drpSearch.SelectedValue != "")
+            {
+                where += " and isCheck='"+ drpSearch.SelectedValue + "' ";
+            }
+            if (txtValue.Text.Trim() != "")
+            {
+                where += " and topicTitle like '%"+ txtValue.Text.Trim() + "%' ";
+            }
+            where += " and policyType="+tId+" ";
+            GridDpt.RecordCount = BLLGET.GetRecordCount(where);
 
-            DataView view = BLLGET.GetListByPage(string.Format(" policyDptId in ({0}) and policyType=" + tId, dptlist.Substring(0, dptlist.Length - 1)), " Id desc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
+            DataView view = BLLGET.GetListByPage(where, " Id desc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
             view.Sort = String.Format("{0} {1}", sortField, sortDirection);
             GridDpt.DataSource = view.ToTable();
             GridDpt.DataBind();
@@ -130,7 +141,7 @@ namespace Maticsoft.Web.Admin.Topic
             }
             else if (e.CommandName == "Edit")
             {
-                Window1.Title = "决策管理";
+                Window1.Title = "议题内容";
                 string openUrl = String.Format("./TopicEdit.aspx?Id={0}&tId="+tId, HttpUtility.UrlEncode(deptID.ToString()));
                 PageContext.RegisterStartupScript(Window1.GetSaveStateReference(deptID.ToString()) + Window1.GetShowReference(openUrl));
             }
@@ -154,15 +165,18 @@ namespace Maticsoft.Web.Admin.Topic
                     //    return;
                     //}
                     top.isCheck = "待审核";
-
+                    top.isCheckPeo = null;
+                    top.isCheckTime = null;
                 }
                 else
                 {
+
                     top.isCheck = "已审核";
+                    top.isCheckPeo = user.usersName;
+                    top.isCheckTime = DateTime.Now;
                 }
 
-                top.isCheckPeo = user.usersName;
-                top.isCheckTime = DateTime.Now;
+               
                 bool isTrue = uBLL.Update(top);
                 if (!isTrue)
                 {
@@ -184,7 +198,7 @@ namespace Maticsoft.Web.Admin.Topic
 
         protected void btnNew_Click(object sender, EventArgs e)
         {
-            Window1.Title = "决策管理";
+            Window1.Title = "议题内容";
             string openUrl = String.Format("./TopicEdit.aspx?dptId={0}&tId=" + tId, HttpUtility.UrlEncode(TreeDpt.SelectedNodeID));
             PageContext.RegisterStartupScript(Window1.GetSaveStateReference(TreeDpt.SelectedNodeID) + Window1.GetShowReference(openUrl));
       
@@ -209,14 +223,18 @@ namespace Maticsoft.Web.Admin.Topic
             if ( row["isCheck"].ToString()=="已审核")
             {
                 deleteField.Enabled = false;
-                checkField.Text = "取审";
+                checkField.Text = "取消";
+                checkField.Icon = Icon.Cancel;
                 editField.Text = "查看";
+                editField.Icon = Icon.Lock;
             }
             else
             {
                 deleteField.Enabled = true;
-                checkField.Text = "审核";
+                checkField.Text = "通过";
+                checkField.Icon = Icon.Accept;
                 editField.Text = "编辑";
+                editField.Icon = Icon.Pencil;
             }
             if (!haveRight(GetIdentityUser().userId, "三重一大审批"))
             {
@@ -226,6 +244,23 @@ namespace Maticsoft.Web.Admin.Topic
             {
                 checkField.Enabled = true;
             }
+        }
+
+        protected void drpSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        protected void btnSelect_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        protected void btnReg_Click(object sender, EventArgs e)
+        {
+            drpSearch.SelectedValue = "";
+            txtValue.Text = "";
+            LoadData();
         }
     }
 }
