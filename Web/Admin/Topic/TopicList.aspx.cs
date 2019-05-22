@@ -15,9 +15,14 @@ namespace Maticsoft.Web.Admin.Topic
 {
     public partial class TopicList : PageBase
     {
-        
+        string tId = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!string.IsNullOrEmpty(Request.QueryString["Id"]))
+            {
+                tId = Request.QueryString["Id"]; 
+            }
             if (!IsPostBack)
             {
                 BindTree();
@@ -81,9 +86,9 @@ namespace Maticsoft.Web.Admin.Topic
             string sortDirection = GridDpt.SortDirection;
             StringBuilder sb = new StringBuilder();
             string dptlist = GetTreeNode(TreeDpt.SelectedNode, sb, true).ToString();
-            GridDpt.RecordCount = BLLGET.GetRecordCount(string.Format(" policyDptId in ({0})", dptlist.Substring(0, dptlist.Length - 1)));
+            GridDpt.RecordCount = BLLGET.GetRecordCount(string.Format(" policyDptId in ({0}) and policyType="+tId, dptlist.Substring(0, dptlist.Length - 1)));
 
-            DataView view = BLLGET.GetListByPage(string.Format(" policyDptId in ({0})", dptlist.Substring(0, dptlist.Length - 1)), " Id desc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
+            DataView view = BLLGET.GetListByPage(string.Format(" policyDptId in ({0}) and policyType=" + tId, dptlist.Substring(0, dptlist.Length - 1)), " Id desc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
             view.Sort = String.Format("{0} {1}", sortField, sortDirection);
             GridDpt.DataSource = view.ToTable();
             GridDpt.DataBind();
@@ -102,45 +107,35 @@ namespace Maticsoft.Web.Admin.Topic
            
             int deptID  = GetSelectedDataKeyID(GridDpt);
 
-        
-            //if (e.CommandName == "Delete")
-            //{
+
+            if (e.CommandName == "Delete")
+            {
 
 
-            //    if (TreeDpt.FindNode(deptID.ToString()).Nodes.Count > 0)
-            //    {
-            //        Alert.ShowInTop("请先删除该部门下子部门！");
-            //        return;
-            //    }
-            //    BLL.tUsers uBLL = new BLL.tUsers();
-            //    if(uBLL.GetModelList(string.Format(" roleCode=10 and dptId={0}",deptID.ToString())).Count>0)
-            //    {
-            //        Alert.ShowInTop("超级用户所在部门无法删除！");
-            //        return;
-            //    }
-
-            //    BLL.tDepartMent BLL = new Maticsoft.BLL.tDepartMent();
-
-            //    bool isTrue = BLL.Delete(deptID);
-
-
-            //    if (!isTrue)
-            //    {
-            //        Alert.ShowInTop("删除失败！");
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        BindTree();
-            //        LoadData();
-            //    }
-            //}
-            //if (e.CommandName == "Edit")
-            //{
-            //    Window1.Title = "部门管理";
-            //    string openUrl = String.Format("./DptMentEdit.aspx?dptId={0}", HttpUtility.UrlEncode(deptID.ToString()));
-            //    PageContext.RegisterStartupScript(Window1.GetSaveStateReference(deptID.ToString())+ Window1.GetShowReference(openUrl));
-            //}
+                 
+                BLL.tTopic uBLL = new BLL.tTopic();
+                if (uBLL.GetModel(deptID).isCheck=="已审核")
+                {
+                    Alert.ShowInTop("已经审核,无法删除！");
+                    return;
+                } 
+                bool isTrue = uBLL.Delete(deptID); 
+                if (!isTrue)
+                {
+                    Alert.ShowInTop("删除失败！");
+                    return;
+                }
+                else
+                {
+                    LoadData();
+                }
+            }
+            if (e.CommandName == "Edit")
+            {
+                Window1.Title = "决策管理";
+                string openUrl = String.Format("./TopicEdit.aspx?Id={0}&tId="+tId, HttpUtility.UrlEncode(deptID.ToString()));
+                PageContext.RegisterStartupScript(Window1.GetSaveStateReference(deptID.ToString()) + Window1.GetShowReference(openUrl));
+            }
 
 
         }
@@ -153,7 +148,7 @@ namespace Maticsoft.Web.Admin.Topic
         protected void btnNew_Click(object sender, EventArgs e)
         {
             Window1.Title = "决策管理";
-            string openUrl = String.Format("./TopicEdit.aspx?dptId={0}", HttpUtility.UrlEncode(TreeDpt.SelectedNodeID));
+            string openUrl = String.Format("./TopicEdit.aspx?dptId={0}&tId=" + tId, HttpUtility.UrlEncode(TreeDpt.SelectedNodeID));
             PageContext.RegisterStartupScript(Window1.GetSaveStateReference(TreeDpt.SelectedNodeID) + Window1.GetShowReference(openUrl));
       
         }

@@ -23,10 +23,12 @@ namespace Maticsoft.Model
 		private string _policyfile;
 		private string _policydptname;
 		private int? _policydptid;
-		private string _ischeck="待审批";
-		private string _policytype;
+		private string _ischeck="待审核";
+		private int? _policytype;
 		private string _ischeckpeo;
 		private DateTime? _ischecktime;
+		private string _savepeo;
+		private int? _savepeoid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -142,7 +144,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string policyType
+		public int? policyType
 		{
 			set{ _policytype=value;}
 			get{return _policytype;}
@@ -162,6 +164,22 @@ namespace Maticsoft.Model
 		{
 			set{ _ischecktime=value;}
 			get{return _ischecktime;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string savePeo
+		{
+			set{ _savepeo=value;}
+			get{return _savepeo;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? savePeoId
+		{
+			set{ _savepeoid=value;}
+			get{return _savepeoid;}
 		}
 		#endregion Model
 

@@ -34,7 +34,7 @@
 
                                 <f:FormRow>
                                     <Items>
-                                        <f:TextBox ID="txtDptName" runat="server" Label="单位名称" Required="true" ShowRedStar="true">
+                                        <f:TextBox ID="txtDptName" runat="server" Label="单位名称" Required="true" ShowRedStar="true" Readonly="true">
                                         </f:TextBox>
 
                                     </Items>
@@ -132,6 +132,7 @@
 
 
         var hfEditorInitValueClientID = '<%= hfEditorInitValue.ClientID %>';
+       var hfEditorInitValueClientID2 = '<%= hfEditorInitValue2.ClientID %>';
         var editor;var editor2;
         F.ready(function () {
             editor = UE.getEditor('editorNew', {

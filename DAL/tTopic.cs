@@ -46,9 +46,9 @@ namespace Maticsoft.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tTopic(");
-			strSql.Append("topicTitle,topicTime,topicFile,policyTime,policyAdress,policyPeople,policyProcess,policyResult,policyDone,policyFile,policyDptName,policyDptId,isCheck,policyType,isCheckPeo,isCheckTime)");
+			strSql.Append("topicTitle,topicTime,topicFile,policyTime,policyAdress,policyPeople,policyProcess,policyResult,policyDone,policyFile,policyDptName,policyDptId,isCheck,policyType,isCheckPeo,isCheckTime,savePeo,savePeoId)");
 			strSql.Append(" values (");
-			strSql.Append("@topicTitle,@topicTime,@topicFile,@policyTime,@policyAdress,@policyPeople,@policyProcess,@policyResult,@policyDone,@policyFile,@policyDptName,@policyDptId,@isCheck,@policyType,@isCheckPeo,@isCheckTime)");
+			strSql.Append("@topicTitle,@topicTime,@topicFile,@policyTime,@policyAdress,@policyPeople,@policyProcess,@policyResult,@policyDone,@policyFile,@policyDptName,@policyDptId,@isCheck,@policyType,@isCheckPeo,@isCheckTime,@savePeo,@savePeoId)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
 					new SqlParameter("@topicTitle", SqlDbType.NVarChar,150),
@@ -64,9 +64,11 @@ namespace Maticsoft.DAL
 					new SqlParameter("@policyDptName", SqlDbType.NVarChar,150),
 					new SqlParameter("@policyDptId", SqlDbType.Int,4),
 					new SqlParameter("@isCheck", SqlDbType.VarChar,20),
-					new SqlParameter("@policyType", SqlDbType.NVarChar,50),
+					new SqlParameter("@policyType", SqlDbType.Int,4),
 					new SqlParameter("@isCheckPeo", SqlDbType.NVarChar,50),
-					new SqlParameter("@isCheckTime", SqlDbType.DateTime)};
+					new SqlParameter("@isCheckTime", SqlDbType.DateTime),
+					new SqlParameter("@savePeo", SqlDbType.NVarChar,50),
+					new SqlParameter("@savePeoId", SqlDbType.Int,4)};
 			parameters[0].Value = model.topicTitle;
 			parameters[1].Value = model.topicTime;
 			parameters[2].Value = model.topicFile;
@@ -83,6 +85,8 @@ namespace Maticsoft.DAL
 			parameters[13].Value = model.policyType;
 			parameters[14].Value = model.isCheckPeo;
 			parameters[15].Value = model.isCheckTime;
+			parameters[16].Value = model.savePeo;
+			parameters[17].Value = model.savePeoId;
 
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
@@ -116,7 +120,9 @@ namespace Maticsoft.DAL
 			strSql.Append("isCheck=@isCheck,");
 			strSql.Append("policyType=@policyType,");
 			strSql.Append("isCheckPeo=@isCheckPeo,");
-			strSql.Append("isCheckTime=@isCheckTime");
+			strSql.Append("isCheckTime=@isCheckTime,");
+			strSql.Append("savePeo=@savePeo,");
+			strSql.Append("savePeoId=@savePeoId");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@topicTitle", SqlDbType.NVarChar,150),
@@ -132,9 +138,11 @@ namespace Maticsoft.DAL
 					new SqlParameter("@policyDptName", SqlDbType.NVarChar,150),
 					new SqlParameter("@policyDptId", SqlDbType.Int,4),
 					new SqlParameter("@isCheck", SqlDbType.VarChar,20),
-					new SqlParameter("@policyType", SqlDbType.NVarChar,50),
+					new SqlParameter("@policyType", SqlDbType.Int,4),
 					new SqlParameter("@isCheckPeo", SqlDbType.NVarChar,50),
 					new SqlParameter("@isCheckTime", SqlDbType.DateTime),
+					new SqlParameter("@savePeo", SqlDbType.NVarChar,50),
+					new SqlParameter("@savePeoId", SqlDbType.Int,4),
 					new SqlParameter("@Id", SqlDbType.Int,4)};
 			parameters[0].Value = model.topicTitle;
 			parameters[1].Value = model.topicTime;
@@ -152,7 +160,9 @@ namespace Maticsoft.DAL
 			parameters[13].Value = model.policyType;
 			parameters[14].Value = model.isCheckPeo;
 			parameters[15].Value = model.isCheckTime;
-			parameters[16].Value = model.Id;
+			parameters[16].Value = model.savePeo;
+			parameters[17].Value = model.savePeoId;
+			parameters[18].Value = model.Id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -216,7 +226,7 @@ namespace Maticsoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 Id,topicTitle,topicTime,topicFile,policyTime,policyAdress,policyPeople,policyProcess,policyResult,policyDone,policyFile,policyDptName,policyDptId,isCheck,policyType,isCheckPeo,isCheckTime from tTopic ");
+			strSql.Append("select  top 1 Id,topicTitle,topicTime,topicFile,policyTime,policyAdress,policyPeople,policyProcess,policyResult,policyDone,policyFile,policyDptName,policyDptId,isCheck,policyType,isCheckPeo,isCheckTime,savePeo,savePeoId from tTopic ");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -300,9 +310,9 @@ namespace Maticsoft.DAL
 				{
 					model.isCheck=row["isCheck"].ToString();
 				}
-				if(row["policyType"]!=null)
+				if(row["policyType"]!=null && row["policyType"].ToString()!="")
 				{
-					model.policyType=row["policyType"].ToString();
+					model.policyType=int.Parse(row["policyType"].ToString());
 				}
 				if(row["isCheckPeo"]!=null)
 				{
@@ -311,6 +321,14 @@ namespace Maticsoft.DAL
 				if(row["isCheckTime"]!=null && row["isCheckTime"].ToString()!="")
 				{
 					model.isCheckTime=DateTime.Parse(row["isCheckTime"].ToString());
+				}
+				if(row["savePeo"]!=null)
+				{
+					model.savePeo=row["savePeo"].ToString();
+				}
+				if(row["savePeoId"]!=null && row["savePeoId"].ToString()!="")
+				{
+					model.savePeoId=int.Parse(row["savePeoId"].ToString());
 				}
 			}
 			return model;
@@ -322,7 +340,7 @@ namespace Maticsoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select Id,topicTitle,topicTime,topicFile,policyTime,policyAdress,policyPeople,policyProcess,policyResult,policyDone,policyFile,policyDptName,policyDptId,isCheck,policyType,isCheckPeo,isCheckTime ");
+			strSql.Append("select Id,topicTitle,topicTime,topicFile,policyTime,policyAdress,policyPeople,policyProcess,policyResult,policyDone,policyFile,policyDptName,policyDptId,isCheck,policyType,isCheckPeo,isCheckTime,savePeo,savePeoId ");
 			strSql.Append(" FROM tTopic ");
 			if(strWhere.Trim()!="")
 			{
@@ -342,7 +360,7 @@ namespace Maticsoft.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" Id,topicTitle,topicTime,topicFile,policyTime,policyAdress,policyPeople,policyProcess,policyResult,policyDone,policyFile,policyDptName,policyDptId,isCheck,policyType,isCheckPeo,isCheckTime ");
+			strSql.Append(" Id,topicTitle,topicTime,topicFile,policyTime,policyAdress,policyPeople,policyProcess,policyResult,policyDone,policyFile,policyDptName,policyDptId,isCheck,policyType,isCheckPeo,isCheckTime,savePeo,savePeoId ");
 			strSql.Append(" FROM tTopic ");
 			if(strWhere.Trim()!="")
 			{
