@@ -62,11 +62,10 @@
                     <Items>
                         <f:TabStrip ID="mainTabStrip" EnableTabCloseMenu="true" ShowBorder="false" runat="server" ShowInkBar="true">
                             <Tabs>
-                                <f:Tab ID="Tab1" Title="首页" BodyPadding="10px" AutoScroll="true" Icon="House" runat="server">
-                                    <Content>
-                                        
-                                    </Content>
+                                <f:Tab ID="Tab1" Title="首页" BodyPadding="2px" AutoScroll="false" Icon="House" runat="server"  EnableIFrame="true" IFrameUrl="~/Admin/DashBoard/DashBoard.aspx">
+                                    
                                 </f:Tab>
+                                  
                             </Tabs>
                         </f:TabStrip>
                     </Items>

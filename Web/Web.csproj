@@ -80,6 +80,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\DashBoard\DashBoard.aspx" />
     <Content Include="Admin\Indexs\IndexEdit.aspx" />
     <Content Include="Admin\Indexs\IndexstList.aspx" />
     <Content Include="Admin\Indexs\selectIndex.aspx" />
@@ -1978,6 +1979,7 @@
     <Content Include="res\images\themes\ui_lightness.png" />
     <Content Include="res\images\themes\vader.png" />
     <Content Include="res\js\common.js" />
+    <Content Include="res\js\echarts.js" />
     <Content Include="res\js\notify_group.js" />
     <Content Include="res\languages\zh_UEY.js" />
     <Content Include="res\themes\bootstrap_pure\theme.css" />
@@ -2288,6 +2290,13 @@
     <Content Include="upload\blank.png" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\DashBoard\DashBoard.aspx.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DashBoard\DashBoard.aspx.designer.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Indexs\IndexEdit.aspx.cs">
       <DependentUpon>IndexEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
