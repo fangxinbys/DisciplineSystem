@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-  
+
     <script src="../../res/js/echarts.js"></script>
 </head>
 <body>
@@ -29,18 +29,18 @@
                                 // 指定图表的配置项和数据
                                 var option = {
                                     title: {
-                                        text: '统计查询'
+                                        text: '周处理文件统计'
                                     },
                                     tooltip: {},
                                     legend: {
-                                        data: ['销量']
+                                        data: ['数量']
                                     },
                                     xAxis: {
-                                        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                                        data: ["监督文件", "考核文件", "上报文件", "反馈文件", "绩效文件", "考勤文件"]
                                     },
                                     yAxis: {},
                                     series: [{
-                                        name: '销量',
+                                        name: '数量',
                                         type: 'bar',
                                         data: [5, 20, 36, 10, 10, 20]
                                     }]
@@ -56,10 +56,11 @@
                             <script>
                                 // 绘制图表。
                                 echarts.init(document.getElementById('main2')).setOption({
+                                    title: {
+                                        text: '学历统计'
+                                    },
                                     series: {
-                                        title: {
-                                            text: '统计查询'
-                                        },
+
                                         type: 'pie',
                                         data: [
                                             { name: '博士', value: 1212 },
@@ -80,6 +81,9 @@
                                 var app = {};
                                 option = null;
                                 option = {
+                                      title: {
+                                        text: '监察舆情'
+                                    },
                                     xAxis: {
                                         type: 'category',
                                         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
