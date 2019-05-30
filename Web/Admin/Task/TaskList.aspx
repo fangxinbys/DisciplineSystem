@@ -20,6 +20,20 @@
                     <Toolbars>
                         <f:Toolbar ID="Toolbar1" Position="Top" runat="server">
                             <Items>
+                                <f:DropDownList runat="server" ID="drpSearch" AutoPostBack="true" OnSelectedIndexChanged="drpSearch_SelectedIndexChanged" Label="状态">
+                                    <f:ListItem Text="全部" Value="" />
+                                    <f:ListItem Text="已审核" Value="已审核" />
+                                    <f:ListItem Text="待审核" Value="待审核" />
+                                </f:DropDownList>
+                            </Items>
+                            <Items>
+                                <f:TextBox runat="server" ID="txtValue" Label="任务名称"></f:TextBox>
+                            </Items>
+                            <Items>
+                                <f:Button runat="server" ID="btnSelect" Text="查询" Icon="Zoom" OnClick="btnSelect_Click"></f:Button>
+                                <f:Button runat="server" ID="btnReg" Text="刷新" Icon="Reload" OnClick="btnReg_Click"></f:Button>
+                            </Items>
+                            <Items>
                                 <f:ToolbarFill ID="ToolbarFill1" runat="server">
                                 </f:ToolbarFill>
                                 <f:Button ID="btnNew" runat="server" Icon="Add" Text="添加任务" OnClick="btnNew_Click">

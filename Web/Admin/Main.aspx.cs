@@ -1,4 +1,5 @@
 ﻿using FineUIPro;
+using Maticsoft.DBUtility;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,29 @@ namespace Maticsoft.Web.Admin
                 btnUserName.ToolTip = dptbll.GetModel(user.dptId).dptName;
                 Maticsoft.BLL.tSet bll = new Maticsoft.BLL.tSet();
                 model = bll.GetModel(1);
-                Maticsoft.BLL.S_Onlines bllOn = new Maticsoft.BLL.S_Onlines();
-                Maticsoft.Model.S_Onlines online = bllOn.GetModelByUseId(user.userId);
+                //Maticsoft.BLL.S_Onlines bllOn = new Maticsoft.BLL.S_Onlines();
+                //Maticsoft.Model.S_Onlines online = bllOn.GetModelByUseId(user.userId);
 
-                CreateNotify("您上次登陆时间是：" + online.UpdateTime, "Self", "登录提示", 5000,false);
-                
+
+                //CreateNotify("您上次登陆时间是：" + online.UpdateTime, "Self", "登录提示", 0,false);
+                GetTask(user.dptId);
             }
+        }
+
+
+        protected void GetTask(int dptId)
+        {
+            string notifyId=Guid.NewGuid().ToString();
+            string sql =string.Format("select  Id,DptId,TaskId,SavaDpt,SaveContent,SaveTime,SavePeo,Title,TaskLevel from dbo.v_task_save where DptId ={0} and SavaDpt is null ", dptId.ToString());
+            DataSet ds = DbHelperSQL.Query(sql);
+            string msg = "待处理任务：<a href=\"javascript:openTaskSave('" + notifyId + "');\" style=\"color:red\">" + ds.Tables[0].Rows.Count+ "个</a><br/>";
+            for (int i = 0; i < ds.Tables[0].Rows.Count;i++)
+            {
+                msg += ds.Tables[0].Rows[i]["Title"]+"<"+ ds.Tables[0].Rows[i]["TaskLevel"] + ">" +"<br/>";
+
+            }
+            CreateNotify(msg, "Self", "即时任务", 0, false, notifyId);
+
         }
         [WebMethod]
         public static void CheckLogin()

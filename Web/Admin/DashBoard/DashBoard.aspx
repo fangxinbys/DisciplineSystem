@@ -81,7 +81,7 @@
                                 var app = {};
                                 option = null;
                                 option = {
-                                      title: {
+                                    title: {
                                         text: '监察舆情'
                                     },
                                     xAxis: {

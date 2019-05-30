@@ -214,8 +214,9 @@ namespace Web
         /// <param name="tbxTitle"></param>
         /// <param name="showTime">5000毫秒/0</param>
         /// <param name="IsModal">true遮盖/false不遮盖</param>
-        protected void CreateNotify(string tbxMessage, string rblTarget, string tbxTitle, int showTime, bool IsModal)
+        protected void CreateNotify(string tbxMessage, string rblTarget, string tbxTitle, int showTime, bool IsModal,string notifyId)
         {
+    
 
             Notify notify = new Notify();
             notify.Message = tbxMessage;
@@ -242,7 +243,7 @@ namespace Web
             //notify.MinWidth = 400;
             //notify.MaxWidth = 500;
 
-            //notify.ID = notifyId; 
+            notify.ID = notifyId; 
             //notify.HideScript = PageManager1.GetCustomEventReference("HideNotify"); 
             notify.Show();
         }

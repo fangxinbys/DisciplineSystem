@@ -140,7 +140,8 @@ namespace Maticsoft.Web.Admin.Task
 
         protected void btnSaveClose_Click(object sender, EventArgs e)
         {
-        
+            Maticsoft.BLL.tTaskLook BLLtt = new Maticsoft.BLL.tTaskLook();
+
             FineUIPro.TreeNode[] nodes = TreeDpt.GetCheckedNodes();
 
 
@@ -167,7 +168,25 @@ namespace Maticsoft.Web.Admin.Task
                 m.SaveTime = DateTimeTop.SelectedDate;
                 m.LockTime = DateTimeLock.SelectedDate;
                 m.TaskLevel = drpSearch.SelectedValue;
-                m.LookDptString = dptlist;
+                if (m.LookDptString == dptlist)
+                {
+                  
+                }
+                else
+                {
+       
+                    BLLtt.Delete(m.Id);
+                    Maticsoft.Model.tTaskLook mlook = new Maticsoft.Model.tTaskLook(); 
+
+                    foreach (FineUIPro.TreeNode node in nodes)
+                    {
+                        mlook.TaskId = m.Id;
+                        mlook.DptId = int.Parse(node.NodeID);
+                        BLLtt.Add(mlook);
+                    }
+
+                    m.LookDptString = dptlist;
+                }
                 if (bll.Update(m) == true)
                 {
                     PageContext.RegisterStartupScript(ActiveWindow.GetHidePostBackReference());
@@ -187,10 +206,19 @@ namespace Maticsoft.Web.Admin.Task
                 m.LockTime = DateTimeLock.SelectedDate;
                 m.TaskLevel = drpSearch.SelectedValue;
                 m.LookDptString = dptlist;
-
+                m.IsCheck = "待审核";
                 m.SavaPeo = GetIdentityUser().usersName;
                 m.SaveDpt = GetIdentityUser().dptId;
                 int k = bll.Add(m);
+       
+                Maticsoft.Model.tTaskLook mlook = new Maticsoft.Model.tTaskLook(); 
+
+                foreach (FineUIPro.TreeNode node in nodes)
+                {
+                    mlook.TaskId = k;
+                    mlook.DptId = int.Parse(node.NodeID);
+                    BLLtt.Add(mlook);
+                }
 
                 if (k > 0)
                 {

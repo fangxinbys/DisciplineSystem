@@ -62,10 +62,9 @@
                     <Items>
                         <f:TabStrip ID="mainTabStrip" EnableTabCloseMenu="true" ShowBorder="false" runat="server" ShowInkBar="true">
                             <Tabs>
-                                <f:Tab ID="Tab1" Title="首页" BodyPadding="2px" AutoScroll="false" Icon="House" runat="server"  EnableIFrame="true" IFrameUrl="~/Admin/DashBoard/DashBoard.aspx">
-                                    
+                                <f:Tab ID="Tab1" Title="首页" BodyPadding="2px" AutoScroll="false" Icon="House" runat="server" EnableIFrame="true" IFrameUrl="~/Admin/DashBoard/DashBoard.aspx">
                                 </f:Tab>
-                                  
+
                             </Tabs>
                         </f:TabStrip>
                     </Items>
@@ -120,6 +119,24 @@
                 refreshWhenTabChange: true,
                 maxTabMessage: '请先关闭一些选项卡（最多允许打开 10 个）！'
             });
+            // 添加示例标签页
+            window.addExampleTab = function (id, url, text, icon, refreshWhenExist) {
+                // 动态添加一个标签页
+                // mainTabStrip： 选项卡实例
+                // id： 选项卡ID
+                // url: 选项卡IFrame地址 
+                // text： 选项卡标题
+                // icon： 选项卡图标
+                // addTabCallback： 创建选项卡前的回调函数（接受tabConfig参数）
+                // refreshWhenExist： 添加选项卡时，如果选项卡已经存在，是否刷新内部IFrame
+                F.util.addMainTab(mainTabStrip, id, url, text, icon, null, refreshWhenExist);
+            };
+
+            // 移除选中标签页
+            window.removeActiveTab = function () {
+                var activeTab = mainTabStrip.getActiveTab();
+                mainTabStrip.removeTab(activeTab.id);
+            };
             time();
         });
     </script>
@@ -157,7 +174,25 @@
             setTimeout(time, 60000);
         }
     </script>
+    <script type="text/javascript">
 
+        var basePath = "<%= ResolveUrl("~/") %>";
+
+        function openTaskSave(notifyId) {
+      
+            parent.addExampleTab({
+                id:notifyId,
+                iframeUrl: "Task/TaskList.aspx",
+                title: "上传报告",
+                icon: basePath + "res/icon/time_red.png",
+                refreshWhenExist: true
+            });
+ 
+            // 关闭通知对话框
+            F(notifyId).hide();
+        }
+
+    </script>
 </body>
 </html>
 

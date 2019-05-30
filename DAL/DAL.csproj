@@ -129,6 +129,7 @@
     <Compile Include="tSet.cs" />
     <Compile Include="tSysLog.cs" />
     <Compile Include="tTask.cs" />
+    <Compile Include="tTaskLook.cs" />
     <Compile Include="tTopic.cs" />
     <Compile Include="tUserPower.cs" />
     <Compile Include="tUsers.cs" />

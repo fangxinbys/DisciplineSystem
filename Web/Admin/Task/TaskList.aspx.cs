@@ -28,7 +28,7 @@ namespace Maticsoft.Web.Admin.Task
         {
             LoadData();
         }
-       
+
         protected void LoadData()
         {
             string dptList = GetChildrenBySelft();
@@ -37,17 +37,30 @@ namespace Maticsoft.Web.Admin.Task
             Maticsoft.BLL.tTask BLL = new Maticsoft.BLL.tTask();
             string sortField = GridDpt.SortField;
             string sortDirection = GridDpt.SortDirection;
-     
-           
-                GridDpt.RecordCount = BLL.GetRecordCount(" SaveDpt in ("+dptList+") ");
-                DataView view = BLL.GetListByPage(" SaveDpt in (" + dptList + ") ", " SaveTime desc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
-                view.Sort = String.Format("{0} {1}", sortField, sortDirection);
-                GridDpt.DataSource = view.ToTable();
-          
+            string where = "";
+            where += " SaveDpt in (" + dptList + ")";
+            if (drpSearch.SelectedValue != "")
+            {
+                where += " and IsCheck='" + drpSearch.SelectedValue + "' ";
+            }
+            if (txtValue.Text.Trim() != "")
+            {
+                where += " and Title like '%" + txtValue.Text.Trim() + "%' ";
+            }
+         
+
+            GridDpt.RecordCount = BLL.GetRecordCount(where);
+            DataView view = BLL.GetListByPage(where, " SaveTime desc ", GridDpt.PageIndex * GridDpt.PageSize, (GridDpt.PageIndex + 1) * GridDpt.PageSize).Tables[0].DefaultView;
+            view.Sort = String.Format("{0} {1}", sortField, sortDirection);
+            GridDpt.DataSource = view.ToTable();
+
             GridDpt.DataBind();
 
         }
-
+        protected void drpSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
         protected void TreeDpt_NodeCommand(object sender, TreeCommandEventArgs e)
         {
             LoadData();
@@ -135,7 +148,17 @@ namespace Maticsoft.Web.Admin.Task
             }
 
         }
+        protected void btnSelect_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
 
+        protected void btnReg_Click(object sender, EventArgs e)
+        {
+            drpSearch.SelectedValue = "";
+            txtValue.Text = "";
+            LoadData();
+        }
         protected void GridDpt_Sort(object sender, GridSortEventArgs e)
         {
             LoadData();

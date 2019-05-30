@@ -58,6 +58,42 @@ namespace Maticsoft.Web.Admin.Task {
         protected global::FineUIPro.Toolbar Toolbar1;
         
         /// <summary>
+        /// drpSearch 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.DropDownList drpSearch;
+        
+        /// <summary>
+        /// txtValue 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.TextBox txtValue;
+        
+        /// <summary>
+        /// btnSelect 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.Button btnSelect;
+        
+        /// <summary>
+        /// btnReg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.Button btnReg;
+        
+        /// <summary>
         /// ToolbarFill1 控件。
         /// </summary>
         /// <remarks>
