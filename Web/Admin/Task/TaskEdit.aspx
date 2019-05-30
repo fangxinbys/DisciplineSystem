@@ -29,10 +29,10 @@
                 <f:TabStrip ID="TabStrip1" IsFluid="true" CssClass="blockpanel" ShowBorder="false" TabPosition="Top"
                     EnableTabCloseMenu="false" ActiveTabIndex="0" runat="server">
                     <Tabs>
-                        <f:Tab Title="编辑信息" runat="server">
+                        <f:Tab Title="即时任务" runat="server">
 
                             <Items>
-                                <f:Panel ID="Panel1" ShowBorder="false" ShowHeader="false" runat="server" Height="340">
+                                <f:Panel ID="Panel1" ShowBorder="false" ShowHeader="false" runat="server" Height="500">
 
                                     <Items>
 
@@ -41,7 +41,7 @@
                                             <Rows>
                                                 <f:FormRow>
                                                     <Items>
-                                                        <f:TextArea ID="txtTitle" runat="server" Label="任务标题" Height="110" Required="true" ShowRedStar="true">
+                                                        <f:TextArea ID="txtTitle" runat="server" Label="任务标题" Height="40" Required="true" ShowRedStar="true">
                                                         </f:TextArea>
                                                     </Items>
                                                 </f:FormRow>
@@ -70,7 +70,7 @@
                                                 </f:FormRow>
                                                 <f:FormRow>
                                                     <Items>
-                                                        <f:Label runat="server" Text="上传附件"></f:Label>
+                                                        <f:Label runat="server" Text="任务内容"></f:Label>
                                                     </Items>
                                                 </f:FormRow>
                                                 <f:FormRow>
@@ -122,9 +122,9 @@
         F.ready(function () {
 
             editor2 = UE.getEditor('editorNew2', {
-                toolbars: [['attachment']],
+                //toolbars: [['attachment']],
                 initialFrameWidth: '100%',
-                initialFrameHeight: '50',
+                initialFrameHeight: '250',
                 autoHeightEnabled: false,
                 autoFloatEnabled: false,
                 focus: false,

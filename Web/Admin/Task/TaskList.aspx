@@ -30,7 +30,7 @@
                     <Columns>
                         <f:RowNumberField EnablePagingNumber="true" />
                         <f:BoundField DataField="TaskLevel" HeaderText="级别" />
-                        <f:BoundField DataField="Title" HeaderText="及时任务" ExpandUnusedSpace="true" />
+                        <f:BoundField DataField="Title" HeaderText="即时任务" ExpandUnusedSpace="true" />
                         <f:BoundField DataField="SavaPeo" HeaderText="发布人" />
                         <f:BoundField DataField="SaveTime" HeaderText="发布时间" />
                         <f:BoundField DataField="LockTime" HeaderText="截止日期" />
@@ -48,8 +48,8 @@
         </f:Panel>
 
         <f:Window ID="Window1" Hidden="true" EnableIFrame="true" runat="server" OnClose="Window1_Close"
-            EnableMaximize="true" EnableResize="true" Target="Top" IsModal="True" Width="750px" Title="编辑任务"
-            Height="500px">
+            EnableMaximize="true" EnableResize="true" Target="Top" IsModal="True" Width="870px" Title="编辑任务"
+            Height="600px">
         </f:Window>
     </form>
 </body>

@@ -128,8 +128,11 @@ namespace Maticsoft.Web.Admin.Task
             }
 
             string[] dptlist = m.LookDptString.Split(',');
-            TreeDpt.SelectedNodeIDArray = dptlist;
-
+            foreach (string str in dptlist)
+            {
+                TreeDpt.FindNode(str).Checked = true;
+            }
+ 
 
         }
 
