@@ -95,6 +95,8 @@
     <Content Include="Admin\Role\RoleEdit.aspx" />
     <Content Include="Admin\Role\RoleList.aspx" />
     <Content Include="Admin\Role\roleMenu.aspx" />
+    <Content Include="Admin\Task\TaskList.aspx" />
+    <Content Include="Admin\Task\TaskEdit.aspx" />
     <Content Include="Admin\Topic\TopicEdit.aspx" />
     <Content Include="Admin\Topic\TopicList.aspx" />
     <Content Include="Admin\UserInfo.aspx" />
@@ -2395,6 +2397,20 @@
     <Compile Include="Admin\Role\roleMenu.aspx.designer.cs">
       <DependentUpon>roleMenu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Task\TaskList.aspx.cs">
+      <DependentUpon>TaskList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Task\TaskList.aspx.designer.cs">
+      <DependentUpon>TaskList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Task\TaskEdit.aspx.cs">
+      <DependentUpon>TaskEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Task\TaskEdit.aspx.designer.cs">
+      <DependentUpon>TaskEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Topic\TopicEdit.aspx.cs">
       <DependentUpon>TopicEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2526,7 +2542,7 @@
     <Content Include="ueditor\third-party\video-js\font\vjs.eot" />
     <Content Include="ueditor\third-party\video-js\font\vjs.ttf" />
     <Content Include="ueditor\third-party\video-js\font\vjs.woff" />
-    <None Include="Properties\PublishProfiles\matic.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

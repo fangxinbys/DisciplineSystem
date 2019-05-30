@@ -25,7 +25,7 @@
                     <Items>
                         <f:TextBox ID="tbxUserName" Label="用户名" Required="true" runat="server">
                         </f:TextBox>
-                        <f:TextBox ID="tbxPassword" Label="密码" TextMode="Password" Required="true" runat="server" Text="admin888.">
+                        <f:TextBox ID="tbxPassword" Label="密码" TextMode="Password" Required="true" runat="server" Text="">
                         </f:TextBox>
                         <f:Panel ID="Panel1" ShowBorder="false" ShowHeader="false" Layout="HBox" BoxConfigAlign="Stretch" runat="server">
                             <Items>

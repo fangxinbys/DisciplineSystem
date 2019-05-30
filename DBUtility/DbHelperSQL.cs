@@ -907,6 +907,29 @@ namespace Maticsoft.DBUtility
             
         }
 
+        //public string GetMaxProductionorder()
+        //{
+        //    SqlConnection connection = new SqlConnection(connectionString);
+        //    SqlCommand cmd = new SqlCommand();
+
+        //    string MaxProductionorder = "";
+
+        //    cmd.Parameters.Add("@Production_mode", SqlDbType.VarChar);
+        //    cmd.Parameters["@Production_mode"].Value = "QZ";
+
+
+        //    cmd.CommandText = "LY_GetMax_Productiontask";
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Connection = connection;
+
+        //    connection.Open();
+        //    MaxProductionorder = cmd.ExecuteScalar().ToString();
+        //    connection.Close();
+
+
+
+        //    return MaxProductionorder;
+        //}
 
         /// <summary>
         /// 执行存储过程

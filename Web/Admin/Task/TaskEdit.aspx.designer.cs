@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Maticsoft.Web.Admin.Topic {
+namespace Maticsoft.Web.Admin.Task {
     
     
-    public partial class TopicEdit {
+    public partial class TaskEdit {
         
         /// <summary>
         /// form1 控件。
@@ -94,31 +94,13 @@ namespace Maticsoft.Web.Admin.Topic {
         protected global::FineUIPro.Panel Panel1;
         
         /// <summary>
-        /// GroupPanel1 控件。
+        /// SimpleForm2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.GroupPanel GroupPanel1;
-        
-        /// <summary>
-        /// SimpleForm1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Form SimpleForm1;
-        
-        /// <summary>
-        /// txtDptName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.TextBox txtDptName;
+        protected global::FineUIPro.Form SimpleForm2;
         
         /// <summary>
         /// txtTitle 控件。
@@ -127,34 +109,7 @@ namespace Maticsoft.Web.Admin.Topic {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.TextBox txtTitle;
-        
-        /// <summary>
-        /// DateTimeCh 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.DatePicker DateTimeCh;
-        
-        /// <summary>
-        /// GroupPanel2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.GroupPanel GroupPanel2;
-        
-        /// <summary>
-        /// SimpleForm2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Form SimpleForm2;
+        protected global::FineUIPro.TextArea txtTitle;
         
         /// <summary>
         /// DateTimeTop 控件。
@@ -166,67 +121,22 @@ namespace Maticsoft.Web.Admin.Topic {
         protected global::FineUIPro.DatePicker DateTimeTop;
         
         /// <summary>
-        /// txtAdress 控件。
+        /// DateTimeLock 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.TextBox txtAdress;
+        protected global::FineUIPro.DatePicker DateTimeLock;
         
         /// <summary>
-        /// txtPeo 控件。
+        /// drpSearch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.TextArea txtPeo;
-        
-        /// <summary>
-        /// txtProcess 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.TextArea txtProcess;
-        
-        /// <summary>
-        /// txtRs 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.TextArea txtRs;
-        
-        /// <summary>
-        /// txtDone 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.TextArea txtDone;
-        
-        /// <summary>
-        /// GroupPanel3 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.GroupPanel GroupPanel3;
-        
-        /// <summary>
-        /// SimpleForm3 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Form SimpleForm3;
+        protected global::FineUIPro.DropDownList drpSearch;
         
         /// <summary>
         /// ContentPanelTwo 控件。
@@ -236,6 +146,15 @@ namespace Maticsoft.Web.Admin.Topic {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::FineUIPro.ContentPanel ContentPanelTwo;
+        
+        /// <summary>
+        /// TreeDpt 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.Tree TreeDpt;
         
         /// <summary>
         /// hfEditorInitValue2 控件。

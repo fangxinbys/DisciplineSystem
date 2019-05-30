@@ -1,6 +1,9 @@
 ﻿using FineUIPro;
+using Maticsoft.DBUtility;
 using Newtonsoft.Json;
 using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -73,6 +76,23 @@ namespace Web
             }
             return false;
         }
+        protected string GetChildrenBySelft()
+        {
+            string Rs = "";
+            int dptId = GetIdentityUser().dptId;
+            IDataParameter[] parameters = new IDataParameter[] { new SqlParameter("@dptId", dptId) };
+            DataSet ds = DbHelperSQL.RunProcedure("GetChildrenDptTree", parameters, "dptTree");
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                if (i == ds.Tables[0].Rows.Count - 1)
+                { Rs += (ds.Tables[0].Rows[i]["dptId"].ToString()); }
+                else
+                { Rs += (ds.Tables[0].Rows[i]["dptId"].ToString() + ","); }
+                
+            }
+            return Rs;
+        }
+
         protected bool haveRight(int userId,string powerName)
         {
             Maticsoft.BLL.tPower pbll = new Maticsoft.BLL.tPower();

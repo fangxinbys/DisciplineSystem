@@ -12,6 +12,7 @@ namespace Maticsoft.Web.Admin.Topic
     public partial class TopicEdit : PageBase
     {
         BLL.tTopic bll = new BLL.tTopic();
+        protected string filelist = "";
    
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -45,7 +46,8 @@ namespace Maticsoft.Web.Admin.Topic
                 Alert.ShowInTop("出错了！"); return;
             }
             hfEditorInitValue2.Text = m.policyFile;
-            hfEditorInitValue.Text = m.topicFile;
+            filelist = m.policyFile;
+            //hfEditorInitValue.Text = m.topicFile;
             txtDptName.Text = m.policyDptName;
             txtTitle.Text = m.topicTitle;
             DateTimeCh.SelectedDate = m.topicTime;
@@ -125,5 +127,6 @@ namespace Maticsoft.Web.Admin.Topic
             }
 
         }
+ 
     }
 }
