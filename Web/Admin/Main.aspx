@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><%=(model==null?"":model.WebName) %></title>
     <link href="~/res/css/index.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/res/images/hxkj.ico" media="screen" />
 </head>
 <body>
     <form id="form1" runat="server">

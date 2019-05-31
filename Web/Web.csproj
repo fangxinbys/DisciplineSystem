@@ -1833,6 +1833,7 @@
     <Content Include="res\icon\zoom.png" />
     <Content Include="res\icon\zoom_in.png" />
     <Content Include="res\icon\zoom_out.png" />
+    <Content Include="res\images\hxkj.ico" />
     <Content Include="res\images\lg.jpg" />
     <Content Include="res\images\blank.png" />
     <Content Include="res\images\blank_150.png" />
