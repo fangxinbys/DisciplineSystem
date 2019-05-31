@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>登录</title>
     <link href="res/css/common.css" rel="stylesheet" />
-    <link rel="shortcut icon" type="image/x-icon" href="res/images/hxkj.ico" media="screen" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/res/images/hxkj.ico" media="screen" />
     <style>
         .imgcaptcha .f-field-label {
             margin: 0;
