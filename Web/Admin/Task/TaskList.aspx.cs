@@ -138,9 +138,9 @@ namespace Maticsoft.Web.Admin.Task
             }
             else if (e.CommandName == "Edit")
             {
-                Window1.Title = "编辑任务";
+             
                 string openUrl = String.Format("./TaskEdit.aspx?Id={0}", HttpUtility.UrlEncode(roleID.ToString()));
-                PageContext.RegisterStartupScript(Window1.GetSaveStateReference(roleID.ToString()) + Window1.GetShowReference(openUrl));
+                PageContext.RegisterStartupScript(Window1.GetSaveStateReference(roleID.ToString()) + Window1.GetShowReference(openUrl, "编辑任务"));
             }
             else
             {
@@ -165,9 +165,8 @@ namespace Maticsoft.Web.Admin.Task
         }
 
         protected void btnNew_Click(object sender, EventArgs e)
-        {
-            Window1.Title = "编辑任务";
-            PageContext.RegisterStartupScript(Window1.GetShowReference("./TaskEdit.aspx"));
+        { 
+            PageContext.RegisterStartupScript(Window1.GetShowReference("./TaskEdit.aspx","新增任务"));
         }
 
         protected void Window1_Close(object sender, WindowCloseEventArgs e)
@@ -209,6 +208,45 @@ namespace Maticsoft.Web.Admin.Task
             {
                 checkField.Enabled = true;
             }
+
+
+            string TaskLevel = row["TaskLevel"].ToString();
+            FineUIPro.BoundField bfEntranceYear = GridDpt.FindColumn("TaskLevel") as FineUIPro.BoundField;
+
+            // 首先清空 data-color 属性
+            bfEntranceYear.Attributes.Remove("data-color");
+
+            // 然后添加 data-color 属性
+            if (TaskLevel == "普通")
+            {
+                bfEntranceYear.Attributes["data-color"] = "color1";
+            }
+            else if (TaskLevel == "紧急")
+            {
+                bfEntranceYear.Attributes["data-color"] = "color2";
+
+            }
+            else if (TaskLevel == "非常紧急")
+            {
+                bfEntranceYear.Attributes["data-color"] = "color3";
+
+            }
+
+        }
+
+        protected void btnLook_Click(object sender, EventArgs e)
+        {
+            int roleID = GetSelectedDataKeyID(GridDpt);
+            if (roleID <= 0)
+            {
+                Alert.ShowInTop("请选择要查看的任务");return;
+            }
+          
+            BLL.tTask bll = new BLL.tTask();
+            Model.tTask m = bll.GetModel(roleID);
+          
+            string openUrl = String.Format("./TaskEditLook.aspx?Id={0}", HttpUtility.UrlEncode(roleID.ToString()));
+            PageContext.RegisterStartupScript(Window2.GetSaveStateReference(roleID.ToString()) + Window2.GetShowReference(openUrl,m.Title));
         }
     }
 }

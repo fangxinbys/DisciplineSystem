@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TaskList.aspx.cs" Inherits="Maticsoft.Web.Admin.Task.TaskList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TaskSaveList.aspx.cs" Inherits="Maticsoft.Web.Admin.Task.TaskSaveList" %>
 
 <!DOCTYPE html>
 
@@ -18,7 +18,7 @@
         }
 
         .f-grid-cell[data-color=color3] {
-            background-color: #ff0000;
+            background-color:#ff0000;
             color: #fff;
         }
     </style>
@@ -36,14 +36,14 @@
                     <Toolbars>
                         <f:Toolbar ID="Toolbar1" Position="Top" runat="server">
                             <Items>
-                                <f:DropDownList runat="server" ID="drpSearch" AutoPostBack="true" OnSelectedIndexChanged="drpSearch_SelectedIndexChanged" Label="任务状态" Width="200" LabelWidth="100">
+                                <f:DropDownList runat="server" ID="drpSearch" AutoPostBack="true" OnSelectedIndexChanged="drpSearch_SelectedIndexChanged" Label="上报情况">
                                     <f:ListItem Text="全部" Value="" />
-                                    <f:ListItem Text="已审核" Value="已审核" />
-                                    <f:ListItem Text="待审核" Value="待审核" />
+                                    <f:ListItem Text="已上报" Value="已上报" />
+                                    <f:ListItem Text="未上报" Value="未上报" />
                                 </f:DropDownList>
                             </Items>
                             <Items>
-                                <f:TextBox runat="server" ID="txtValue" Label="任务名称"></f:TextBox>
+                                <f:TextBox runat="server" ID="txtValue" Label="任务速查"></f:TextBox>
                             </Items>
                             <Items>
                                 <f:Button runat="server" ID="btnSelect" Text="查询" Icon="Zoom" OnClick="btnSelect_Click"></f:Button>
@@ -52,10 +52,7 @@
                             <Items>
                                 <f:ToolbarFill ID="ToolbarFill1" runat="server">
                                 </f:ToolbarFill>
-                                <f:Button ID="btnLook" runat="server" Icon="ReportWord" Text="查看上报" OnClick="btnLook_Click">
-                                </f:Button>
-                                <f:Button ID="btnNew" runat="server" Icon="Add" Text="添加任务" OnClick="btnNew_Click">
-                                </f:Button>
+
                             </Items>
                         </f:Toolbar>
                     </Toolbars>
@@ -64,28 +61,25 @@
                         <f:BoundField DataField="TaskLevel" HeaderText="级别" ColumnID="TaskLevel" />
                         <f:BoundField DataField="Title" HeaderText="即时任务" ExpandUnusedSpace="true" />
                         <f:BoundField DataField="SavaPeo" HeaderText="发布人" />
-                        <f:BoundField DataField="SaveTime" HeaderText="发布时间" />
-                        <f:BoundField DataField="LockTime" HeaderText="截止日期" />
+                        <f:BoundField DataField="SaveTime" HeaderText="发布时间" Width="120" />
+                        <f:BoundField DataField="LockTime" HeaderText="截止日期" Width="120" />
 
-                        <f:BoundField DataField="IsCheck" HeaderText="状态" />
+                     
+                          <f:TemplateField Width="120px" HeaderText="是否上报">
+                                    <ItemTemplate>
+                                        <asp:Label runat="server" ID="GetIsSaveLib" Text='<%# GetIsSave(Eval("Id").ToString()) %>'></asp:Label>
+                                    </ItemTemplate>
+                                </f:TemplateField>
 
-
-                        <f:LinkButtonField ColumnID="checkField" TextAlign="Center" ConfirmTarget="Top" CommandName="Check" Width="80px" HeaderText="审核" ConfirmText="确定进行审核操作？" />
-
-                        <f:LinkButtonField ColumnID="editField" TextAlign="Center" ConfirmTarget="Top" CommandName="Edit" Width="80px" HeaderText="编辑" />
-                        <f:LinkButtonField ColumnID="deleteField" TextAlign="Center" Icon="Delete" ConfirmText="确定删除该条信息？" ConfirmTarget="Top" CommandName="Delete" Width="50px" HeaderText="删除" />
+                        <f:LinkButtonField ColumnID="editField" TextAlign="Center" ConfirmTarget="Top" CommandName="Edit" Width="80px" HeaderText="操作" Icon="Pencil" Text="上报" />
                     </Columns>
                 </f:Grid>
             </Items>
         </f:Panel>
 
         <f:Window ID="Window1" Hidden="true" EnableIFrame="true" runat="server" OnClose="Window1_Close"
-            EnableMaximize="true" EnableResize="true" Target="Top" IsModal="True" Width="870px" Title="编辑任务"
-            Height="600px">
-        </f:Window>
-        <f:Window ID="Window2" Hidden="true" EnableIFrame="true" runat="server"  
-            EnableMaximize="true" EnableResize="true" Target="Top" IsModal="True" Width="900px"  
-            Height="600px">
+            EnableMaximize="true" EnableResize="true" Target="Top" IsModal="True" Width="870px" Title="即时上报"
+            Height="550px">
         </f:Window>
     </form>
 </body>

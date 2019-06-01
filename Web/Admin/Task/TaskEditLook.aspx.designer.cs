@@ -10,7 +10,7 @@
 namespace Maticsoft.Web.Admin.Task {
     
     
-    public partial class TaskList {
+    public partial class TaskEditLook {
         
         /// <summary>
         /// form1 控件。
@@ -40,102 +40,57 @@ namespace Maticsoft.Web.Admin.Task {
         protected global::FineUIPro.Panel Panel1;
         
         /// <summary>
-        /// GridDpt 控件。
+        /// toolbar 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Grid GridDpt;
+        protected global::FineUIPro.Toolbar toolbar;
         
         /// <summary>
-        /// Toolbar1 控件。
+        /// btnClose 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Toolbar Toolbar1;
+        protected global::FineUIPro.Button btnClose;
         
         /// <summary>
-        /// drpSearch 控件。
+        /// panelLeftRegion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.DropDownList drpSearch;
+        protected global::FineUIPro.Panel panelLeftRegion;
         
         /// <summary>
-        /// txtValue 控件。
+        /// TreeDpt 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.TextBox txtValue;
+        protected global::FineUIPro.Tree TreeDpt;
         
         /// <summary>
-        /// btnSelect 控件。
+        /// panelRightRegion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Button btnSelect;
+        protected global::FineUIPro.ContentPanel panelRightRegion;
         
         /// <summary>
-        /// btnReg 控件。
+        /// lit_rs 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Button btnReg;
-        
-        /// <summary>
-        /// ToolbarFill1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.ToolbarFill ToolbarFill1;
-        
-        /// <summary>
-        /// btnLook 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Button btnLook;
-        
-        /// <summary>
-        /// btnNew 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Button btnNew;
-        
-        /// <summary>
-        /// Window1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Window Window1;
-        
-        /// <summary>
-        /// Window2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Window Window2;
+        protected global::System.Web.UI.WebControls.Literal lit_rs;
     }
 }

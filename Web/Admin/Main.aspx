@@ -89,7 +89,7 @@
         var treeMenuClientID = '<%= treeMenu.ClientID %>';
         var mainTabStripClientID = '<%= mainTabStrip.ClientID %>';
         var windowThemeRollerClientID = '<%= windowThemeRoller.ClientID %>';
-
+        var leftPanelClientID = '<%= leftPanel.ClientID %>';
         // 点击主题仓库
         function onThemeSelectClick(event) {
             F(windowThemeRollerClientID).show();
@@ -132,6 +132,8 @@
                 // refreshWhenExist： 添加选项卡时，如果选项卡已经存在，是否刷新内部IFrame
                 F.util.addMainTab(mainTabStrip, id, url, text, icon, null, refreshWhenExist);
             };
+
+
 
             // 移除选中标签页
             window.removeActiveTab = function () {
@@ -177,22 +179,30 @@
     </script>
     <script type="text/javascript">
 
-        var basePath = "<%= ResolveUrl("~/") %>";
+       <%-- var basePath = "<%= ResolveUrl("~/") %>";--%>
 
         function openTaskSave(notifyId) {
-      
-            parent.addExampleTab({
-                id:notifyId,
-                iframeUrl: "Task/TaskList.aspx",
-                title: "上传报告",
-                icon: basePath + "res/icon/time_red.png",
-                refreshWhenExist: true
-            });
- 
-            // 关闭通知对话框
+
+            //parent.addExampleTab({
+            //    id:notifyId,
+            //    iframeUrl: "Task/TaskList.aspx",
+            //    title: "上传报告",
+            //    icon: basePath + "res/icon/time_red.png",
+            //    refreshWhenExist: true
+            //});
+
+            var leftPanel = F(leftPanelClientID);
+            var treeMenu = leftPanel.getItem(0);
+            F.addMainTabByHref(F(mainTabStripClientID), treeMenu, "/Admin/Task/TaskSaveList.aspx", true);
+
             F(notifyId).hide();
         }
+        //function addExampleTabByHref(href, actived) {
+        //    var leftPanel = F(treeMenuClientID);
+        //    var treeMenu = leftPanel.getItem(0);
 
+        //    F.addMainTabByHref(F(mainTabStripClientID), treeMenu, href, actived);
+        //}
     </script>
 </body>
 </html>

@@ -95,6 +95,9 @@
     <Content Include="Admin\Role\RoleEdit.aspx" />
     <Content Include="Admin\Role\RoleList.aspx" />
     <Content Include="Admin\Role\roleMenu.aspx" />
+    <Content Include="Admin\Task\TaskEditLook.aspx" />
+    <Content Include="Admin\Task\TaskSaveEdit.aspx" />
+    <Content Include="Admin\Task\TaskSaveList.aspx" />
     <Content Include="Admin\Task\TaskList.aspx" />
     <Content Include="Admin\Task\TaskEdit.aspx" />
     <Content Include="Admin\Topic\TopicEdit.aspx" />
@@ -2397,6 +2400,27 @@
     </Compile>
     <Compile Include="Admin\Role\roleMenu.aspx.designer.cs">
       <DependentUpon>roleMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Task\TaskEditLook.aspx.cs">
+      <DependentUpon>TaskEditLook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Task\TaskEditLook.aspx.designer.cs">
+      <DependentUpon>TaskEditLook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Task\TaskSaveEdit.aspx.cs">
+      <DependentUpon>TaskSaveEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Task\TaskSaveEdit.aspx.designer.cs">
+      <DependentUpon>TaskSaveEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Task\TaskSaveList.aspx.cs">
+      <DependentUpon>TaskSaveList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Task\TaskSaveList.aspx.designer.cs">
+      <DependentUpon>TaskSaveList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Task\TaskList.aspx.cs">
       <DependentUpon>TaskList.aspx</DependentUpon>

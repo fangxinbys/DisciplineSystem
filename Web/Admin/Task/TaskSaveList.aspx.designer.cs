@@ -10,7 +10,7 @@
 namespace Maticsoft.Web.Admin.Task {
     
     
-    public partial class TaskList {
+    public partial class TaskSaveList {
         
         /// <summary>
         /// form1 控件。
@@ -103,22 +103,13 @@ namespace Maticsoft.Web.Admin.Task {
         protected global::FineUIPro.ToolbarFill ToolbarFill1;
         
         /// <summary>
-        /// btnLook 控件。
+        /// GetIsSaveLib 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Button btnLook;
-        
-        /// <summary>
-        /// btnNew 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Button btnNew;
+        protected global::System.Web.UI.WebControls.Label GetIsSaveLib;
         
         /// <summary>
         /// Window1 控件。
@@ -128,14 +119,5 @@ namespace Maticsoft.Web.Admin.Task {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::FineUIPro.Window Window1;
-        
-        /// <summary>
-        /// Window2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Window Window2;
     }
 }

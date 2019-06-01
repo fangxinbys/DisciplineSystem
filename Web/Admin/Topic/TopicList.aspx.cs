@@ -141,9 +141,9 @@ namespace Maticsoft.Web.Admin.Topic
             }
             else if (e.CommandName == "Edit")
             {
-                Window1.Title = "议题内容";
+              
                 string openUrl = String.Format("./TopicEdit.aspx?Id={0}&tId="+tId, HttpUtility.UrlEncode(deptID.ToString()));
-                PageContext.RegisterStartupScript(Window1.GetSaveStateReference(deptID.ToString()) + Window1.GetShowReference(openUrl));
+                PageContext.RegisterStartupScript(Window1.GetSaveStateReference(deptID.ToString()) + Window1.GetShowReference(openUrl,"编辑议题"));
             }
             else if (e.CommandName == "Check")
             {
@@ -198,9 +198,9 @@ namespace Maticsoft.Web.Admin.Topic
 
         protected void btnNew_Click(object sender, EventArgs e)
         {
-            Window1.Title = "议题内容";
+           
             string openUrl = String.Format("./TopicEdit.aspx?dptId={0}&tId=" + tId, HttpUtility.UrlEncode(TreeDpt.SelectedNodeID));
-            PageContext.RegisterStartupScript(Window1.GetSaveStateReference(TreeDpt.SelectedNodeID) + Window1.GetShowReference(openUrl));
+            PageContext.RegisterStartupScript(Window1.GetSaveStateReference(TreeDpt.SelectedNodeID) + Window1.GetShowReference(openUrl,"新增议题"));
       
         }
 
